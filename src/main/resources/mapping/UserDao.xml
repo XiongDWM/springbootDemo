@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spj.dao.UserDao">
+
+	<resultMap id="usermap" type="com.spj.model.User">
+		<id property="id" column="id"></id>
+        <result property="uid" column="uid"></result>
+        <result property="pwd" column="pwd"></result>
+	</resultMap>
+
+	<!-- default statement type 'prepared' -->
+
+	<insert id="add" statementType="PREPARED"
+		parameterType="com.spj.model.User">
+		insert into
+		products.user_info(uid,pwd) values
+		(#{uid},#{pwd})
+	</insert>
+
+	<!-- 本质上是结果是一个model -->
+	<select id="searchByUsername" resultType="com.spj.model.User">
+		select * from
+		products.user_info where uid=#{uid}
+	</select>
+
+	<select id="searchByUidAndPwd" resultType="com.spj.model.User">
+		select * from
+		products.user_info where uid=#{uid} and pwd=#{pwd}
+	</select>
+
+	<select id="findAll" resultType="usermap">
+		select * from products.user_info
+	</select>
+
+	<delete id="del">
+		delete from products.user_info where id=#{id}
+	</delete>
+
+	<update id="update" parameterType="com.spj.model.User">
+		update products.user_info set
+		uid=#{uid}, pwd=#{pwd} where id=#{id}
+	</update>
+
+	<select id="getUser" resultType="com.spj.model.User">
+		select * from products.user_info
+		order by id desc limit 1
+	</select>
+
+	<select id="fussySearch" parameterType="com.spj.model.User"
+		resultMap="usermap">
+		<!-- select * from products.user_info where uid LIKE concat('%',#{searchStr},'%') 
+			现在如果查询多字段 用";"隔开 OR where id LIKE concat('%',#{id},'%') </if> <if test="uid!=null 
+			and uid!=''"> OR where uid LIKE concat('%',#{uid},'%') </if> <if test="pwd!=null 
+			and pwd!=''"> OR where pwd LIKE concat('%',#{pwd},'%') -->
+		<!-- <foreach collection="searchStr.split(';')" item="searchStr" index="index" 
+			separator=","> '%',#{searchStr},'%' </foreach> -->
+		select * from products.user_info WHERE 1=1
+		<if test="id!=0">
+			And id like concat('%',#{id},'%')
+
+		</if>
+		<if test="uid!=null and uid!=''">
+			And uid like concat('%',#{uid},'%')
+		</if>
+		<if test="pwd!=null and pwd!=''">
+			And pwd like concat('%',#{pwd},'%')
+		</if>
+
+	</select>
+</mapper>

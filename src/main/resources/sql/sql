@@ -1,0 +1,6 @@
+ALTER TABLE `stu`.`student_info` 
+ADD COLUMN `sid` VARCHAR(45) NULL AFTER `id`,
+ADD COLUMN `studnt` VARCHAR(45) NULL AFTER `sid`,
+ADD COLUMN `address` VARCHAR(45) NULL AFTER `studnt`,
+ADD COLUMN `sex` VARCHAR(45) NULL AFTER `address`,
+ADD COLUMN `authority` VARCHAR(45) NULL AFTER `sex`;
