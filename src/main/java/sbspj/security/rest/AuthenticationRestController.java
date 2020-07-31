@@ -26,10 +26,6 @@ public class AuthenticationRestController {
 	private final TokenProvider tokenProvider;
 	private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
-	public AuthenticationRestController() {
-		this.tokenProvider = null;
-		this.authenticationManagerBuilder = null;
-	}
 
 	public AuthenticationRestController(TokenProvider tokenProvider,
 			AuthenticationManagerBuilder authenticationManagerBuilder) {

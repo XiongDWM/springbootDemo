@@ -29,12 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
   
    
-   public SecurityConfig() {
-	this.tokenProvider = null;
-	this.jwtAccessDeniedHandler = new JwtAccessDeniedHandler();
-	this.authenticationErrorHandler=new JwtAuthenticationEntryPoint();
-	this.corsFilter=null;
-   }
    public SecurityConfig(
       TokenProvider tokenProvider,
       CorsFilter corsFilter,
@@ -67,7 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/*.html",
             "/**/*.html",
             "/**/*.css",
-            "/**/*.js"
+            "/**/*.js",
+            "/h2-console/**"
          );
    }
 
