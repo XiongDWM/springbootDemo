@@ -46,7 +46,7 @@ public class AuthenticationRestController {
 		String jwt = tokenProvider.createToken(authentication, rememberMe);
 
 		HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer" + jwt);
+		httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "pandapanda" + jwt);
 
 		return new ResponseEntity<>(new JWTToken(jwt), httpHeaders, HttpStatus.OK);
 

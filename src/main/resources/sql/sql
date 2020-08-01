@@ -4,3 +4,31 @@ ADD COLUMN `studnt` VARCHAR(45) NULL AFTER `sid`,
 ADD COLUMN `address` VARCHAR(45) NULL AFTER `studnt`,
 ADD COLUMN `sex` VARCHAR(45) NULL AFTER `address`,
 ADD COLUMN `authority` VARCHAR(45) NULL AFTER `sex`;
+
+
+
+	<select id="fussySearch" parameterType="User" resultType="User">
+		<!-- select * from products.user_info where uid LIKE concat('%',#{searchStr},'%') 
+			 现在如果查询多字段 用";"隔开
+			 OR where id LIKE concat('%',#{id},'%')
+		</if>
+		<if test="uid!=null and uid!=''">
+		OR where uid LIKE concat('%',#{uid},'%')
+		</if>
+		<if test="pwd!=null and pwd!=''">
+		OR where pwd LIKE concat('%',#{pwd},'%')
+		-->
+		<!-- 			<foreach collection="searchStr.split(';')" item="searchStr" index="index" separator=",">
+					'%',#{searchStr},'%'
+			</foreach> -->
+		select * from products.user_info WHERE 1=1 
+		<if test="id!=0">
+			And id like concat('%',#{id},'%')
+			
+		</if>
+		<if test="uid!=null and uid!=''">
+			And uid like concat('%',#{uid},'%')
+		</if>
+		<if test="pwd!=null and pwd!=''">
+			And pwd like concat('%',#{pwd},'%')
+		</if>

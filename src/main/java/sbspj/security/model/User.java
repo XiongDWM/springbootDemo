@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,8 +30,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "student_info")
-public class Student implements Serializable{
+@Table(name = "user_info")
+public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -41,17 +42,17 @@ public class Student implements Serializable{
 	@SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
 	private Integer id;
 
-	@Column(name = "sid")
+	@Column(name = "uid")
 	@NotNull
-	private String sid;
+	private String uid;
 
-	@Column(name = "spwd")
+	@Column(name = "upwd")
 	@NotNull
-	private String spwd;
+	private String upwd;
 
-	@Column(name = "studnt")
+	@Column(name = "name")
 	@NotNull
-	private String studnt;
+	private String name;
 
 	@Column(name = "address")
 	@NotNull
@@ -60,10 +61,6 @@ public class Student implements Serializable{
 	@Column(name = "phone")
 	@NotNull
 	private String phone;
-
-	@Column(name = "sex")
-	@NotNull
-	private int sex;
 	
 	@Column(name="email")
 	@NotNull
@@ -74,9 +71,9 @@ public class Student implements Serializable{
 	@NotNull
 	private boolean activated;
 
-	@ManyToMany
-	@JoinTable(name = "student_authority", joinColumns = {
-			@JoinColumn(name = "stu_id", referencedColumnName = "id") }, inverseJoinColumns = {
+	@ManyToMany(cascade = CascadeType.REFRESH)
+	@JoinTable(name = "user_authority", joinColumns = {
+			@JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "authority_name", referencedColumnName = "roles") })
 	private Set<Authorities> authority = new HashSet<>();
 
@@ -86,8 +83,8 @@ public class Student implements Serializable{
 			return true;
 		if (obj == null || getClass() != obj.getClass())
 			return false;
-		Student student=(Student)obj;
-		return id.equals(student.id);
+		User user=(User)obj;
+		return id.equals(user.id);
 
 	}
 
