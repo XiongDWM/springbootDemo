@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../js/lib/jquery.js"></script>
+<!-- <script src="/front-wxjs/static/js/newsAdd.js"></script> -->
+
+<title>新闻新增</title>
+</head>
+<body>
+	<div>
+    	新闻标题:<input type="text" id="newsHeading" name="newsHeading">
+	</div>
+	<div>
+		链接：<input type="text" id="newsHref" name="newsHref">	
+	</div>
+	<div>
+    	新闻图片:<input type="file" id="npUrl" name="npUrl">
+    	<img src="" id="pic">
+	</div>
+	<div>
+    	新闻内容:<textarea rows="10" cols="30" id="newsContent" name="newsContent"></textarea>
+	</div>
+	<div>是否使用：<select name="isUsed" id="isUsed" size="1">
+					<option value="1">是</option>
+					<option value="0">否</option>
+	</select>
+	</div>
+	<div>
+    	<input type="button" value="提交" onclick="saveData()">
+	</div>
+</body>
+</html>

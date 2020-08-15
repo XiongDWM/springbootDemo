@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> -->
+<!-- String path=request.getContextPath();
+    String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  -->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>后台首页</title>
+<link rel="stylesheet" type="text/css" href="../css/backHome.css" />
+<script src="../js/lib/jquery.js"></script>
+<style type="text/css">
+a:link {font-size =12px;
+	color: Grey;
+	text-decoration: none;
+}
+
+a:visited {font-size =12px;
+	color: Grey;
+	text-decoration: none;
+}
+
+a:hover {
+	color: black;
+}
+</style>
+</head>
+<body>
+	<div class="back-top">
+		<a href="http://localhost:8080/wxjs/exit">退出</a>
+	</div>
+	<a href=productAdd.html></a>
+	<div class="back-left">
+		<ul>
+		<li>登录信息
+				<ol>
+					<li><a
+						href="javascript:$('#backright').load('logininfo.html')">个人信息</a></li>
+					<li><a
+						href="javascript:$('#backright').load('vocabularycollection.html')"></a>单词收藏夹</li>
+				</ol>
+			</li>
+			<li>用户管理
+				<ol>
+					<li><a
+						href="javascript:$('#backright').load('UserSearch.html')">用户查询</a></li>
+					<li><a
+						href="javascript:$('#backright').load('UserAdd.html')">用户新增</a></li>
+				</ol>
+			</li>
+			<li>菜单栏管理
+				<ol>
+					<li><a
+						href="javascript:$('#backright').load('moduleSelect.html')">菜单栏查找</a></li>
+					<li><a
+						href="javascript:$('#backright').load('moduleAdd.html')">菜单栏新增</a></li>
+				</ol>
+			</li>
+			<li>公司信息
+				<ol>
+					<li><a
+						href="javascript:$('#backright').load('companyselect.html')">公司查询</a></li>
+					<li><a
+						href="javascript:$('#backright').load('add.html')">公司新增</a></li>
+				</ol>
+			</li>
+			<li>新闻板块
+				<ol>
+					<li><a
+						href="javascript:$('#backright').load('moduleSelect.html')">板块查询</a></li>
+					<li><a
+						href="javascript:$('#backright').load('moduleAdd.html')">板块新增</a></li>
+				</ol>
+			</li>
+			<li>新闻信息
+				<ol>
+					<li><a
+						href="javascript:$('#backright').load('newsSelect.html')">新闻查询</a></li>
+					<li><a
+						href="javascript:$('#backright').load('newsAdd.html')">新闻新增</a></li>
+				</ol>
+			</li>
+			
+			<li>产品信息
+				<ol>
+					<li><a
+						href="javascript:$('#backright').load('productSearch.html')">产品查询</a></li>
+					<li><a
+						href="javascript:$('#backright').load('productAdd.html')">产品新增</a></li>
+				</ol>
+			</li>
+			
+			<li>单词模块
+				<ol>
+					<li><a
+						href="javascript:$('#backright').load('VocabAdd.html')">单词增加</a></li>
+					<li><a
+						href="javascript:$('#backright').load('VocabSearch.html')">所有单词</a></li>
+				</ol>
+			</li>
+			<li>转到前端
+				<ol>
+					<li><a href="http://localhost:8080/wxjs/test">前端首页</a></li>
+				</ol>
+			</li>
+		</ul>
+	</div>
+	<div class="back-right" id="backright"></div>
+</body>
+</html>

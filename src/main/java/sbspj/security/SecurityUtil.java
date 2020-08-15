@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class SecurityUtil {
 	private static final Logger LOG=LoggerFactory.getLogger(SecurityUtil.class);
 	
-	public static Optional<String> getCurrentStudnt(){
+	public static Optional<String> getCurrentUser(){
 		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if(authentication==null) {
 			LOG.debug("no authentication in security context found");

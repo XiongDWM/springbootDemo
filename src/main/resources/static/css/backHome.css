@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.back-top {
+    height: 100px;
+    background-color: red;
+}
+
+.back-left {
+    width: 20%;	
+    height: 100%;
+    float: left;
+    background-color:black;
+    display: flex;
+    justify-content: center;
+}
+
+.back-right {
+    width: 80%;
+    float: left;
+    height: 100%;
+    /*background-color: brown;*/
+}
+
+.back-left ul li, ol li {
+    list-style: none;
+    line-height: 30px;
+}
+.back-left ul li{
+	color:white;
+}
+
+.back-left ol li {
+    text-indent: 2em;
+    
+}
+
+.back-left ul li ol li:hover {
+    background-color: red;
+}

@@ -1,0 +1,106 @@
+body{
+	margin-top:0px;
+	margin-left:10%;
+	margin-right:10%;
+	display:block;
+}
+
+.logo{
+	float:left;
+	width:23%;
+	height:50px;
+	line-height:50px;
+	text-align:top;
+}
+.char-logo{
+	float:left;
+	width:10%;
+	height:50px;
+	line-height:50px;
+	text-align:top;
+	display:block;
+}
+.menu{
+	width:8%;
+	display:inline-block;
+	text-align:center;
+	font-size:15px;
+	color:grey;
+	text-decoration:none;
+	line-height:50px; 
+	background-color:black;
+}
+/*--------hover事件-----------*/
+.menu:hover{       
+	background-color:red;
+	color:white;
+}
+.product{
+	text-align:center;
+	display:inline-block;
+	float:left;
+	width:200px;
+	padding:15px;
+	margin:5px,5px,5px,5px;
+}
+.product img {
+    width: 100%;
+    height: 100%;
+}
+.product div{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/*----------梯形的块-----------*/
+.dt{
+	width:60%;
+	height:300px;
+	text-align:right;
+	float:left;
+	background-color:#2B2B2B;
+	transform:skew(-30deg,0deg);
+	overflow:hidden;
+	margin-left:-150px;
+	
+}
+.cutting{
+	width:20px;
+	margin:auto;
+	height:300px;
+	background-color:white;
+	transform:skew(-25deg,0deg);
+}
+.textBox{
+	width:20%;
+	height:auto;
+	text-align:left;
+	float:left;
+	margin-left:17%;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow:hidden;
+	color:grey;
+	font-size:20px;
+	line-height:25px;
+}
+.textBox p:nth-child(1){
+	font-size:30px;
+	color:red;
+}
+.textBox p:nth-child(2){
+	font-size:10px;
+	color:white;
+	line-height:5px
+}
+<!----------------------------------------->
+.pl{
+	height:auto;
+	width:200px;
+	float:left
+}
+.pr{
+	height:auto;
+	width:220px;
+	float:right
+}

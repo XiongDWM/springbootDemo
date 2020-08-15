@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>产品新增</title>
+<script src="../js/lib/jquery.js"></script>
+<!-- <script src="/front-wxjs/static/js/productAdd.js"></script> -->
+</head>
+<body>
+	<div>
+    	产品名:<input type="text" id="infoText" name="infoText">
+	</div>
+	<div>
+    	产品图片:<input type="file" id="picUrl" name="picUrl">
+    	<img src="" id="pic">
+	</div>
+	<div>
+    	价格:<input type="number" step="0.5" id="price" name="price">
+	</div>
+	<div>
+    	<input type="button" value="提交" onclick="saveData()">
+	</div>
+</body>
+</html>

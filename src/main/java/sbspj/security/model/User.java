@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +25,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import sbspj.bean.VocabBean;
 
 @Data
 @NoArgsConstructor
@@ -31,8 +33,8 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "user_info")
-public class User implements Serializable{
-	
+public class User implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@JsonIgnore
@@ -61,8 +63,8 @@ public class User implements Serializable{
 	@Column(name = "phone")
 	@NotNull
 	private String phone;
-	
-	@Column(name="email")
+
+	@Column(name = "email")
 	@NotNull
 	private String email;
 
@@ -71,11 +73,30 @@ public class User implements Serializable{
 	@NotNull
 	private boolean activated;
 
-	@ManyToMany(cascade = CascadeType.REFRESH)
+	/**
+	 * 
+	 * cascade type is to give the authority
+	 * 
+	 * fetch type is to tell the load type: eagar and lazy lazy is to say do not
+	 * need to load the related part while loading the main part
+	 * 
+	 */
+	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_authority", joinColumns = {
 			@JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "authority_name", referencedColumnName = "roles") })
 	private Set<Authorities> authority = new HashSet<>();
+
+	@ManyToMany
+
+	@JoinTable(name = "vocab_collected", joinColumns = {
+
+			@JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
+
+					@JoinColumn(name = "vocab_id", referencedColumnName = "id"),
+
+					@JoinColumn(name = "isCollect_info", referencedColumnName = "isCollect") })
+	private Set<VocabBean> vocabulary=new HashSet<>();
 
 	@Override
 	public boolean equals(Object obj) {
@@ -83,7 +104,7 @@ public class User implements Serializable{
 			return true;
 		if (obj == null || getClass() != obj.getClass())
 			return false;
-		User user=(User)obj;
+		User user = (User) obj;
 		return id.equals(user.id);
 
 	}
@@ -92,4 +113,5 @@ public class User implements Serializable{
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
 }

@@ -1,4 +1,4 @@
-package sbspj.configration;
+package sbspj.util.configration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

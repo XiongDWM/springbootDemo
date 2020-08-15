@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- <script src="/front-wxjs/static/js/userSelect.js"></script> -->
+	<script src="../js/vocabSearch.js"></script>
+</head>
+<body>
+	<div>
+    	<input type="text" id="searchinCHN" name="searchinCHN">
+    	<input type="text" id="searchinENG" name="searchinENG">
+    	<input type="button" value="查询" onclick="findAll()">
+	</div>
+	<table class="table table-condensed">
+   		<thead>
+    	<tr>
+        	<td>单词</td>
+        	<td>翻译</td>
+        	<td>操作</td>
+    	</tr>
+   		</thead>
+    	<tbody id="vcdata"></tbody>
+	</table>
+</body>
+</html>

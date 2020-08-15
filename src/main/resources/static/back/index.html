@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Sign Up</title>
+<style type="text/css">
+	div{
+		padding:5px;
+		}
+</style>
+<script src="../js/user.js"></script>	
+<script src="../js/lib/jquery.js"></script>
+</head>
+
+<body>
+
+<div style="height:200px;width:20%;margin:auto;background-color:black">
+<form name="checkform" method="post">
+<div style="color:white">UserName: <input type="text" id="uid" name="username"/><span id="uidText"></span></div>
+<div style="color:white">Password: <input type="text" id="pwd" name="password"/><span id="pwdText"></span></div>
+<!-----------------------fromname.action='servlet注解地址'；fromname.submit()可以让按钮实现同一个表单两次不同的提交-------------------------------->
+<div><input type="button" value="Sign Up" onclick="checkform.action='http://localhost:8080/wxjs/signup';checkform.submit();return testify()"></div>
+<div><input type="submit" value="Already Have One, Click Here and Sign In !!!" onclick="checkform.action='/api/login';checkform.submit()"></div>
+</form>
+</div>
+</body>
+</html>
