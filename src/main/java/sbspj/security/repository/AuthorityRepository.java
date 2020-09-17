@@ -12,8 +12,10 @@ import sbspj.security.model.Authorities;
 
 @Repository(value = "authorRepo")
 @Resource(name = "Authorities")
-public interface AuthorityRepository extends JpaRepository<Authorities,String>{
+public interface AuthorityRepository extends JpaRepository<Authorities,Integer>{
 	
 		@EntityGraph(attributePaths = "authorights")
 		Optional<Authorities>findOneWithRightsById(Integer id);
+
+		
 }

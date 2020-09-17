@@ -4,22 +4,37 @@ $(function () {
 
 function findAll() {  
    $.ajax({
-        url: '/vcontent/findAll',
+        url: 'http://localhost:8180/vcontent/findAll',
         data:'',
         dataType: 'json',
         type: 'get',
-        async : false,
         success: function (data){
+        	console.log(data);
+        	var item=data.detail;
+        	console.log(item);
             let html = '';
-            for (let i = 0; i <data[0].length; i++) {
-                html += '<tr>' +
-                    '<td>' + data[0].data[i].translate+ '</td>' +
-                    '<td>' + data[0].data[i].context+ '</td>' +
-                    '<td><a href="javascript:toEdit(' + data[0].data[i] + ')">编辑</a>  ' +
-                    '<a href="javascript:Del(' + data[0].data[i] + ')" >删除</a></td>' +
+            for (let i = 0; i <item.length; i++) {
+           		html += '<tr>' +
+                    '<td>' + item[i].context + '</td>' +
+                    '<td>' + item[i].translate + '</td>' +
+                    '<td>' + item[i].isLike + '</td>' +
+                    '<td><a href="javascript:toCollect(' + item[i].id + ')">收藏</a>  ' +
+                    '<a href="javascript:toLike(' + item[i].id + ')" >点赞</a></td>' +
                     '</tr>';
             }
             $("#vcdata").html(html);
         },
     })
+}
+function toLike(id){
+	$.ajax({
+        url: 'http://localhost:8180/vcontent/likeThis',
+        data: {vocabId: id},
+        type: 'post',
+        dataType: 'json',
+        success: function () {
+            $("#backright").load('http://localhost:8180/back/VocabSearch.html');
+        }
+    })
+	
 }

@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**")
 
 				// allow anonymous resource requests
-				.antMatchers("/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/h2-console/**");
+				.antMatchers("/", "/*.html", "/**/*.html", "/**/*.css", "/*.css","/**/*.js", "/h2-console/**");
 	}
 
 	// Configure security settings
@@ -85,6 +85,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/hiddenmessage").hasAuthority("ROLE_ADMIN")
 				.antMatchers("/api/getoptions").permitAll()
 				.antMatchers("/api/getoptiont").permitAll()
+				.antMatchers("/vcontent/findA").permitAll()
+				.antMatchers("/api/alluser").permitAll()
+				.antMatchers("/vcontent/likeThis").permitAll()
 				
 				.anyRequest().authenticated()
 

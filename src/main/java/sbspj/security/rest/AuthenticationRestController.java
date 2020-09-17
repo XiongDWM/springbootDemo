@@ -35,11 +35,11 @@ public class AuthenticationRestController {
 		this.authenticationManagerBuilder = authenticationManagerBuilder;
 	}
 	
-	@PostMapping("/authenticate")
-	public ResponseEntity<JWTToken> authorize(@Valid @RequestBody LoginDto loginDto) {
+	@PostMapping(value="/authenticate", consumes="application/json")
+	public ResponseEntity<JWTToken> authorize(@Valid @RequestBody LoginDto loginDto){
 
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-				loginDto.getId(), loginDto.getPwd());
+				loginDto.getUsername(), loginDto.getPassword());
 
 		Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -48,8 +48,8 @@ public class AuthenticationRestController {
 		String jwt = tokenProvider.createToken(authentication, rememberMe);
 
 		HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "pandapanda" + jwt);
-
+		httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "bear" + jwt);
+		System.out.println(jwt);
 		return new ResponseEntity<>(new JWTToken(jwt), httpHeaders, HttpStatus.OK);
 
 	}

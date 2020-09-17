@@ -22,11 +22,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 import sbspj.bean.VocabBean;
 
+
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -87,14 +91,13 @@ public class User implements Serializable {
 					@JoinColumn(name = "authority_name", referencedColumnName = "roles") })
 	private Set<Authorities> authority = new HashSet<>();
 
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.REFRESH,fetch = FetchType.LAZY,targetEntity = VocabBean.class)
 
 	@JoinTable(name = "vocab_collected", joinColumns = {
 
 			@JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
 
 					@JoinColumn(name = "vocab_id", referencedColumnName = "id"),
-
 					@JoinColumn(name = "isCollect_info", referencedColumnName = "isCollect") })
 	private Set<VocabBean> vocabulary=new HashSet<>();
 

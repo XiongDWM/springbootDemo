@@ -22,10 +22,8 @@ import lombok.ToString;
 @ToString
 public class LoginDto {
 	@NotNull
-	@Size(min = 1, max = 50)
-	private String id;
+	private String username;
 	@NotNull
-	@Size(min = 4, max = 100)
-	private String pwd;
+	private String password;
 	private Boolean memBoolean;
 }

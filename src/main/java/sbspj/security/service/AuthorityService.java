@@ -1,6 +1,9 @@
 package sbspj.security.service;
 
+import java.util.HashSet;
 import java.util.List;
+
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
@@ -19,6 +22,14 @@ public class AuthorityService {
 	private AuthorityRepository authorRepo;
 	
 	public List<Authorities> getAllAuthorities(){
+
 		return authorRepo.findAll();
+	}
+	public Set<Authorities> getOne(Integer id){
+		Authorities authorities=authorRepo.findById(id).get();
+		Set<Authorities> rs=new HashSet<Authorities>();
+		rs.add(authorities);
+		return rs;
+		
 	}
 }

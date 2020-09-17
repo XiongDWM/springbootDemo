@@ -4,9 +4,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Vocabulary Add</title>
+<title>单词查找</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- <script src="/front-wxjs/static/js/userSelect.js"></script> -->
+	<script src="../js/vocabCollection.js"></script>
 </head>
 <body>
-<div>单词：<input type="text" id="lableName" name="lableName"/><span id="lableText"></span></div>
-	<div><input type="button" value="提交" onclick="save()"><input type="reset" value="重置"></div>
+	<div>
+    	<input type="text" id="searchinCHN" name="searchinCHN">
+    	<input type="text" id="searchinENG" name="searchinENG">
+    	<input type="button" value="查询" onclick="findAll()">
+	</div>
+	<table class="table table-condensed">
+   		<thead>
+    	<tr>
+        	<td>单词</td>
+        	<td>翻译</td>
+    	</tr>
+   		</thead>
+    	<tbody id="vcsdata"></tbody>
+	</table>
 </body>
+
 </html>

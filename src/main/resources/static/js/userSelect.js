@@ -1,26 +1,30 @@
-
-let AURL="http://localhost:8080/wxjs"
-	
 $(function () {
-    findAll();
+  findAll();
 })
 
 function findAll() {
-	let data={ searchinId: $("#searchinId").val(), searchinUid: $("#searchinUid").val(),searchinPwd: $("#searchinPwd").val()}
     $.ajax({
-        url: AURL+'/userSelect',
-        data:data,
+        url: 'http://localhost:8180/api/alluser',
+        data:'',
         dataType: 'json',
         type: 'get',
         success: function (data){
             let html = '';
-            for (let i = 0; i < data[0].object.length; i++) {
+            var item=data.detail;
+            console.log(item);
+            for (let i = 0; i < item.length; i++) {
                 html += '<tr>' +
-                    '<td>' + data[0].object[i].id + '</td>' +
-                    '<td>' + data[0].object[i].uid + '</td>' +
-                    '<td>' + data[0].object[i].pwd + '</td>' +
-                    '<td><a href="javascript:UserEdit(' + data[0].object[i].id + ')">编辑</a>  ' +
-                    '<a href="javascript:UserDel(' + data[0].object[i].id + ')" >删除</a></td>' +
+                    '<td>' + item[i].id + '</td>' +
+                    '<td>' + item[i].uid + '</td>' +
+                    '<td>' + item[i].upwd + '</td>' +
+                    '<td>' + item[i].name + '</td>' +
+                    '<td>' + item[i].phone + '</td>' +
+                    '<td>' + item[i].address + '</td>' +
+                    '<td>' + item[i].email + '</td>' +
+                    '<td>' + item[i].activated + '</td>' +
+                    '<td>' + item[i].authority[0].details + '</td>' +
+                    '<td><a href="javascript:UserEdit(' + item[i].id + ')">编辑</a>  ' +
+                    '<a href="javascript:UserDel(' + item[i].id + ')" >删除</a></td>' +
                     '</tr>';
             }
             $("#userData").html(html);
@@ -31,6 +35,9 @@ function findAll() {
 
     })
 }
+
+
+
 function UserEdit(id) {
     localStorage.setItem("userId", id);
     $('#backright').load('/front-wxjs/back/UserAdd.html');

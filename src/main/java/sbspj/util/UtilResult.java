@@ -2,12 +2,13 @@ package sbspj.util;
 
 import java.util.HashMap;
 
+import lombok.EqualsAndHashCode;
 //import lombok.AllArgsConstructor;
 //import lombok.Data;
 //import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
+@EqualsAndHashCode(callSuper = false)
 @ToString
 public class UtilResult extends HashMap<String, Object> {
 	
@@ -15,7 +16,7 @@ public class UtilResult extends HashMap<String, Object> {
 	
 	private static final String CODE_TAG="code";
 	private static final String MSG_TAG="msg";
-	private static final String DATA_TAG="object";
+	private static final String DATA_TAG="detail";
 	
 	public UtilResult() {
 		
@@ -24,11 +25,11 @@ public class UtilResult extends HashMap<String, Object> {
 		super.put(CODE_TAG,code);
 		super.put(MSG_TAG,msg);
 	}
-	public UtilResult(int code,String msg,Object data) {
+	public UtilResult(int code,String msg,Object detail) {
 		super.put(CODE_TAG,code);
 		super.put(MSG_TAG,msg);
-		if(data!=null) {
-			super.put(DATA_TAG,data);
+		if(detail!=null) {
+			super.put(DATA_TAG,detail);
 		}
 	}
 	

@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 //import org.hibernate.annotations.GeneratorType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -30,18 +33,21 @@ public class DailyReportBean {
 	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
+	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name="whatlearnt")
+
+	@Column(name = "whatlearnt")
 	private String whatLearnt;
-	@Column(name="whatdone")
+
+	@Column(name = "whatdone")
 	private String whatDone;
+	@Column(name="checked")
+	private boolean isChecked=false;
+
 	
-	@Column(name="check")
-	private boolean isCheck;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="author_id",referencedColumnName = "id")
-	private User author;
-	
+	  @OneToOne(fetch = FetchType.LAZY)
+	  
+	  @JoinColumn(name = "author_id", referencedColumnName = "id") 
+	  private User author;
+	 
 }

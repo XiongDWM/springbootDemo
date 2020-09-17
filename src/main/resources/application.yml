@@ -31,8 +31,8 @@ spring:
       enabled: true
   jwt:     
     header: Authorization
-    secret: YXV0aG9yaXR5LWtleS1zcHJpbmctc2VjdXJpdHktbXktc2lnbml0dXJlCg==
-    #authority-key-spring-security-my-signiture 256 bits
+    secret: WVhWMGFHOXlhWFI1TFd0bGVTMXpjSEpwYm1jdGMyVmpkWEpwZEhrdGJYa3RjMmxuYm1sMGRYSmxDZyUzRCUzRCUwQQ==
+    #authority-key-spring-security-my-signiture 256 bits YXV0aG9yaXR5LWtleS1zcHJpbmctc2VjdXJpdHktbXktc2lnbml0dXJlCg== 2times
     validity-in-seconds: 86400
     validity-in-seconds-for-remember-me: 10800
     route:

@@ -28,7 +28,7 @@ public class SecurityUtil {
 	         studnt = (String) authentication.getPrincipal();
 	      }
 
-	      LOG.debug("found student '{}' in security context", studnt);
+	      LOG.debug("found user '{}' in security context", studnt);
 
 	      return Optional.ofNullable(studnt);
 		

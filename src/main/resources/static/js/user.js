@@ -1,11 +1,11 @@
 
 $(function () {
-    getOptionList; 
+    getOptionList(); 
 })
 
 function testify() {
     var username = document.getElementById('uid').value;
-    var password = document.getElementById('pwd').value;
+    var password = document.getElementById('upwd').value;
     var reg = /^[a-zA-Z]\w{2,15}$/;
     if (reg.test(username)) {
         document.getElementById('uidText').innerHTML = "用户名可用";
@@ -18,7 +18,7 @@ function testify() {
         $('#pwdtext').html("过");
     } else {
         $('#pwdtext').html("再来亿遍");
-        $('#pwd').focus();
+        $('#upwd').focus();
         return false;
     }
     	return true;
@@ -47,20 +47,31 @@ function setUserData(data) {
 
 
 function save() {
-    let data = {username: $("#uid").val(), 
-    			password: $("#pwd").val()
+    let UserDto = {
+    			id:$("#id").val(),
+    			uid: $("#uid").val(), 
+    			upwd: $("#upwd").val(),
+    			name: $("#name").val(),
+    			address:$("#address").val(),
+    			phone:$("#phone").val(),
+    			email:$("#email").val(),
+    			authorities:$("#authorities").val(),
+    			activated:$("#isActive").val()
     			
-    
-    
     };
+    console.log(UserDto);
     if (testify()) {
         $.ajax({
-            url: '/api/userAdd',
-            data: data,
+            url: 'http://localhost:8180/api/register',
+            data: JSON.stringify(UserDto),
             type: 'post',
             dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            
             success: function (data) {
-                alert(data[0].result);
+            console.log(data);
+            var message=data.msg;
+                alert(message);
                 $('#backright').load('UserSearch.html');
             }
         })
@@ -69,17 +80,26 @@ function save() {
 
 function getOptionList(){
 	$.ajax({
-		url:'/api/getoptions',
+		url:'http://localhost:8180/api/getoptions',
 		type:'get',
 		data:'',
 		dataType:'json',
-		
 		success:function(data){
+			var item=data.detail;
+			console.log(item);
 			var html='';
-			 	for(let i = 0; i < data[0].data.length; i++){
-			 	html+='<option value='+data[0].data[i].roles+'>'+data[0].data[i].details+'</option>'
+			 	for(let i = 0; i < item.length; i++){
+			 	html+='<option value='+ item[i].id +'>'+ item[i].details +'</option>'
 			 	}
 			 	$("#authorities").html(html);
 			},
 		})
+}
+
+function doLogin(){
+	
+
+
+
+
 }
